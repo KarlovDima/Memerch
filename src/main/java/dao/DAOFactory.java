@@ -12,6 +12,9 @@ public class DAOFactory {
     private static UserDAO userDAO;
     private static DAOFactory daoFactory;
 
+    private DAOFactory() {
+    }
+
     public static synchronized DAOFactory getInstance() {
         if (daoFactory == null)
             daoFactory = new DAOFactory();
