@@ -1,0 +1,20 @@
+ul {
+    text-align: center;
+    font-family: 'DejaVu Sans Mono', monospace;
+    font-size: 3vmin;
+    padding: 1%;
+}
+
+li {
+    display: inline;
+    margin: 3%;
+}
+
+li a:hover {
+    color: black;
+}
+
+li a {
+    text-decoration: none;
+    color: black;
+}
