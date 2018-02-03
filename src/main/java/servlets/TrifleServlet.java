@@ -19,6 +19,9 @@ public class TrifleServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        if (request.getParameter("category") != null)
+            request.getRequestDispatcher("good").forward(request, response);
+
         List<Trifle> trifleList = DAOFactory.getInstance().getTrifleDAO().getAll();
 
         request.setAttribute("goods", trifleList);

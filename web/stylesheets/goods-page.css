@@ -1,17 +1,18 @@
-table {
-    padding: 1%;
-}
-
-td {
-    padding: 3vmin;
+body {
+    padding: 1vmin;
 }
 
 img {
-    width: 35vmin;
-    height: 35vmin;
+    width: 50vmin;
+    height: 50vmin;
 }
 
-label {
+.name {
+    font-family: 'DejaVu Sans Mono', monospace;
+    font-size: 3vmin;
+}
+
+.parameter {
     font-family: 'DejaVu Sans Mono', monospace;
     font-size: 2vmin;
 }

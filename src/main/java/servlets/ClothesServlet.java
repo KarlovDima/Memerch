@@ -21,6 +21,9 @@ public class ClothesServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        if (request.getParameter("category") != null)
+            request.getRequestDispatcher("good").forward(request, response);
+
         List<Clothes> clothesList = DAOFactory.getInstance().getClothesDAO().getAll();
 
         request.setAttribute("goods", clothesList);

@@ -18,6 +18,9 @@ public class CutleryServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        if (request.getParameter("category") != null)
+            request.getRequestDispatcher("good").forward(request, response);
+
         List<Cutlery> cutleryList = DAOFactory.getInstance().getCutleryDAO().getAll();
 
         request.setAttribute("goods", cutleryList);
