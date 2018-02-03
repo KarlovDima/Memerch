@@ -67,4 +67,6 @@ public abstract class Good {
     public void setMaterial(String material) {
         this.material = material;
     }
+
+    public abstract String getCategory();
 }

@@ -9,13 +9,16 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-@WebServlet("/HomepageServlet")
+@WebServlet(value = "/homepage", name = "HomepageServlet")
 public class HomepageServlet extends javax.servlet.http.HttpServlet {
     protected void doPost(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
-
+        doGet(request, response);
     }
 
     protected void doGet(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
+        if (request.getParameter("category") != null)
+            request.getRequestDispatcher("good").forward(request, response);
+
         List<Good> goods = new ArrayList<>();
         goods.addAll(DAOFactory.getInstance().getClothesDAO().getAll());
         goods.addAll(DAOFactory.getInstance().getCutleryDAO().getAll());

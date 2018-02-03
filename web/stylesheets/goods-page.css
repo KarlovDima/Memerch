@@ -11,13 +11,7 @@ img {
     height: 35vmin;
 }
 
-td a:hover {
-    color: black;
-}
-
-td a {
-    text-decoration: none;
-    color: black;
+label {
     font-family: 'DejaVu Sans Mono', monospace;
     font-size: 2vmin;
 }

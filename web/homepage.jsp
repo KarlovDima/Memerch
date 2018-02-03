@@ -15,12 +15,14 @@
             List<Good> goods = (List<Good>) request.getAttribute("goods");
             for (Good good : goods) {
                 out.println("<td align=\"center\">" +
+                        "<a href=\"?category=" + good.getCategory() + "&id=" + good.getId() + "\">" +
                         "<img src=\"" + good.getMem() + "\"/>" +
-                        "<br/><label>" + good.getName() + "</label>" +
-                        "</td>");
+                        "<br/>" + good.getName() +
+                        "</a></td>");
                 if ((goods.indexOf(good) + 1) % 4 == 0) out.print("</tr><tr>");
             }
         %>
     </tr>
 </table>
+</body>
 </html>

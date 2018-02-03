@@ -18,4 +18,9 @@ public class Trifle extends Good {
     public void setAmount(int amount) {
         this.amount = amount;
     }
+
+    @Override
+    public String getCategory() {
+        return "trifle";
+    }
 }

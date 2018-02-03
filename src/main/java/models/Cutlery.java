@@ -18,4 +18,9 @@ public class Cutlery extends Good {
     public void setVolume(String volume) {
         this.volume = volume;
     }
+
+    @Override
+    public String getCategory() {
+        return "cutlery";
+    }
 }

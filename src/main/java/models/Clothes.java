@@ -18,4 +18,9 @@ public class Clothes extends Good {
     public void setSize(String size) {
         this.size = size;
     }
+
+    @Override
+    public String getCategory() {
+        return "clothes";
+    }
 }
