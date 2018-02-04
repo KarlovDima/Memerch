@@ -1,6 +1,6 @@
 package dao.implementation;
 
-import dao.DatabaseConnection;
+import utils.DatabaseConnection;
 import dao.GenericDAO;
 import models.Cutlery;
 
@@ -84,7 +84,7 @@ public class CutleryDAO implements GenericDAO<Cutlery, Integer> {
     public int delete(Integer id) {
         int affectedRowsAmount = 0;
         try (Connection connection = DatabaseConnection.getInstance().getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement("DELETE CUTLERY WHERE ID = ?")) {
+             PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM CUTLERY WHERE ID = ?")) {
             preparedStatement.setInt(1, id);
             affectedRowsAmount = preparedStatement.executeUpdate();
         } catch (SQLException e) {

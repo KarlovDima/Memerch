@@ -1,6 +1,6 @@
 package dao.implementation;
 
-import dao.DatabaseConnection;
+import utils.DatabaseConnection;
 import dao.GenericDAO;
 import models.User;
 
@@ -72,7 +72,7 @@ public class UserDAO implements GenericDAO<User, Integer> {
     public int delete(Integer id) {
         int affectedRowsAmount = 0;
         try (Connection connection = DatabaseConnection.getInstance().getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement("DELETE USER WHERE ID = ?")) {
+             PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM USER WHERE ID = ?")) {
             preparedStatement.setInt(1, id);
             affectedRowsAmount = preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -94,5 +94,26 @@ public class UserDAO implements GenericDAO<User, Integer> {
             e.printStackTrace();
         }
         return affectedRowsAmount;
+    }
+
+    public User getEntityByLoginAndPassword(String login, String password) {
+        User user =null;
+        try (Connection connection = DatabaseConnection.getInstance().getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM USER WHERE LOGIN = ? AND PASSWORD = ?")) {
+            preparedStatement.setString(1, login);
+            preparedStatement.setString(2, password);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while ((resultSet.next())) {
+                    user=new User();
+                    user.setId(resultSet.getInt(1));
+                    user.setLogin(resultSet.getString(2));
+                    user.setPassword(resultSet.getString(3));
+                    break;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return user;
     }
 }

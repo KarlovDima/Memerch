@@ -1,4 +1,4 @@
-package servlets;
+package servlets.user;
 
 import dao.DAOFactory;
 import models.Clothes;

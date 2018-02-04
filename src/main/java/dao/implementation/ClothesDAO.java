@@ -1,6 +1,6 @@
 package dao.implementation;
 
-import dao.DatabaseConnection;
+import utils.DatabaseConnection;
 import dao.GenericDAO;
 import models.Clothes;
 
@@ -84,7 +84,7 @@ public class ClothesDAO implements GenericDAO<Clothes, Integer> {
     public int delete(Integer id) {
         int affectedRowsAmount = 0;
         try (Connection connection = DatabaseConnection.getInstance().getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement("DELETE CLOTHES WHERE ID = ?")) {
+             PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM CLOTHES WHERE ID = ?")) {
             preparedStatement.setInt(1, id);
             affectedRowsAmount = preparedStatement.executeUpdate();
         } catch (SQLException e) {

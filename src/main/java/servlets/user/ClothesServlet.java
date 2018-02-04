@@ -1,7 +1,8 @@
-package servlets;
+package servlets.user;
 
 import dao.DAOFactory;
-import models.Cutlery;
+import models.Clothes;
+import models.Good;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,10 +10,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
-@WebServlet(value = "/cutlery", name = "CutleryServlet")
-public class CutleryServlet extends HttpServlet {
+@WebServlet(value = "/clothes", name = "ClothesServlet")
+public class ClothesServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
@@ -21,9 +24,9 @@ public class CutleryServlet extends HttpServlet {
         if (request.getParameter("category") != null)
             request.getRequestDispatcher("good").forward(request, response);
 
-        List<Cutlery> cutleryList = DAOFactory.getInstance().getCutleryDAO().getAll();
+        List<Clothes> clothesList = DAOFactory.getInstance().getClothesDAO().getAll();
 
-        request.setAttribute("goods", cutleryList);
+        request.setAttribute("goods", clothesList);
         request.getRequestDispatcher("homepage.jsp").forward(request, response);
     }
 }

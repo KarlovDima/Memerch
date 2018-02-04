@@ -1,8 +1,8 @@
-package servlets;
+package servlets.user;
 
 import dao.DAOFactory;
-import models.Clothes;
-import models.Good;
+import models.Cutlery;
+import models.Trifle;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,12 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-@WebServlet(value = "/clothes", name = "ClothesServlet")
-public class ClothesServlet extends HttpServlet {
+@WebServlet(value = "/trifles", name = "TrifleServlet")
+public class TrifleServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
@@ -24,9 +22,9 @@ public class ClothesServlet extends HttpServlet {
         if (request.getParameter("category") != null)
             request.getRequestDispatcher("good").forward(request, response);
 
-        List<Clothes> clothesList = DAOFactory.getInstance().getClothesDAO().getAll();
+        List<Trifle> trifleList = DAOFactory.getInstance().getTrifleDAO().getAll();
 
-        request.setAttribute("goods", clothesList);
+        request.setAttribute("goods", trifleList);
         request.getRequestDispatcher("homepage.jsp").forward(request, response);
     }
 }
