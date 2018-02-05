@@ -1,0 +1,20 @@
+body {
+    min-height: 100%;
+    padding-top: 20%;
+    margin: auto;
+    width: max-content;
+}
+
+form {
+    font-family: 'DejaVu Sans Mono', monospace;
+    font-size: 5vmin;
+}
+
+td {
+    padding: 1vmin;
+}
+
+input {
+    font-family: 'DejaVu Sans Mono', monospace;
+    font-size: 3vmin;
+}

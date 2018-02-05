@@ -15,6 +15,8 @@ import java.io.PrintWriter;
 @WebServlet(value = "/authorization", name = "AuthorizationServlet")
 public class AuthorizationServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getSession().setAttribute("entered", false);
+
         String login = request.getParameter("login");
         String password = request.getParameter("password");
         password = PasswordEncryptor.encrypt(password);

@@ -6,7 +6,7 @@
 <html>
 <head>
     <title>GOOD</title>
-    <link rel="stylesheet" type="text/css" href="stylesheets/goods-page.css">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/goods-page.css">
 </head>
 <body>
 <jsp:include page="header.html"/>

@@ -1,0 +1,23 @@
+table {
+    padding: 1%;
+}
+
+td {
+    padding: 3vmin;
+}
+
+img {
+    width: 10vmin;
+    height: 10vmin;
+}
+
+td a:hover {
+    color: black;
+}
+
+td a {
+    text-decoration: none;
+    color: black;
+    font-family: 'DejaVu Sans Mono', monospace;
+    font-size: 2vmin;
+}

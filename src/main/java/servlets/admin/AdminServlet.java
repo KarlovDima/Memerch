@@ -19,7 +19,7 @@ public class AdminServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (request.getSession().getAttribute("entered") != null) {
+        if (request.getSession().getAttribute("entered") != null && (boolean)request.getSession().getAttribute("entered")) {
             List<Good> goods = new ArrayList<>();
             goods.addAll(DAOFactory.getInstance().getClothesDAO().getAll());
             goods.addAll(DAOFactory.getInstance().getCutleryDAO().getAll());
