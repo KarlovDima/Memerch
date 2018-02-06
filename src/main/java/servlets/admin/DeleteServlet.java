@@ -16,19 +16,21 @@ public class DeleteServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int id = Integer.parseInt(request.getParameter("id"));
-        String category = request.getParameter("category");
-        switch (category) {
-            case "clothes":
-                DAOFactory.getInstance().getClothesDAO().delete(id);
-                break;
-            case "cutlery":
-                DAOFactory.getInstance().getCutleryDAO().delete(id);
-                break;
-            case "trifle":
-                DAOFactory.getInstance().getTrifleDAO().delete(id);
-                break;
-        }
-        response.sendRedirect("admin");
+        if (request.getSession().getAttribute("entered") != null && (boolean)request.getSession().getAttribute("entered")) {
+            int id = Integer.parseInt(request.getParameter("id"));
+            String category = request.getParameter("category");
+            switch (category) {
+                case "clothes":
+                    DAOFactory.getInstance().getClothesDAO().delete(id);
+                    break;
+                case "cutlery":
+                    DAOFactory.getInstance().getCutleryDAO().delete(id);
+                    break;
+                case "trifle":
+                    DAOFactory.getInstance().getTrifleDAO().delete(id);
+                    break;
+            }
+            response.sendRedirect("admin");
+        } else request.getRequestDispatcher("authorization.html").include(request, response);
     }
 }
