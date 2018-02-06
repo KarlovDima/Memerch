@@ -1,11 +1,13 @@
 body {
     min-height: 100%;
-    padding-top: 20%;
-    margin: auto;
-    width: max-content;
 }
 
 form {
+    padding-top: 20%;
+
+    margin: auto;
+    width: max-content;
+
     font-family: 'DejaVu Sans Mono', monospace;
     font-size: 5vmin;
 }

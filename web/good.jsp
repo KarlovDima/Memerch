@@ -5,8 +5,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>GOOD</title>
     <link rel="stylesheet" type="text/css" href="../stylesheets/goods-page.css">
+    <title>GOOD</title>
 </head>
 <body>
 <jsp:include page="header.html"/>

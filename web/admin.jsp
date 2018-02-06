@@ -8,13 +8,16 @@
     <title>ADMIN</title>
 </head>
 <body>
+<jsp:include page="admin-header.html"/>
+<br/><br/>
+
 <table align="center">
     <%
         List<Good> goods = (List<Good>) request.getAttribute("goods");
         for (Good good : goods) {
             out.println("<tr>\n" +
                     "<td><img src=\"" + good.getMem() + "\"></td>\n" +
-                    "<td><a href=\"?category=" + good.getCategory() + "&id=" + good.getId() + "\">" + good.getName() + "</a></td>\n" +
+                    "<td><a href=\"/edit?category=" + good.getCategory() + "&id=" + good.getId() + "\">" + good.getName() + "</a></td>\n" +
                     "<td><a href=\"/delete?category=" + good.getCategory() + "&id=" + good.getId() + "\">Delete</a></td>\n" +
                     "</tr>");
         }
