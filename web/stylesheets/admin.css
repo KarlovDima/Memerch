@@ -1,9 +1,11 @@
 table {
-    padding: 1%;
+    min-width: 100%;
+    font-family: 'DejaVu Sans Mono', monospace;
+    font-size: 2vmin;
 }
 
 td {
-    padding: 3vmin;
+    padding: 2vmin;
 }
 
 img {
@@ -18,6 +20,11 @@ td a:hover {
 td a {
     text-decoration: none;
     color: black;
+    font-family: 'DejaVu Sans Mono', monospace;
+    font-size: 2vmin;
+}
+
+select {
     font-family: 'DejaVu Sans Mono', monospace;
     font-size: 2vmin;
 }

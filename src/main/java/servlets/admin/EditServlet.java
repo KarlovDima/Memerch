@@ -24,16 +24,20 @@ public class EditServlet extends HttpServlet {
         if (request.getSession().getAttribute("entered") != null && (boolean) request.getSession().getAttribute("entered")) {
             String category = request.getParameter("category");
 
-            if (request.getParameter("name") != null)
+            if (request.getParameter("name") != null) {
                 editGood(request, category);
-
-            forwardToEditPage(request, response, category);
+                redirectToEditPage(request, response, category);
+            } else forwardToEditPage(request, response, category);
 
         } else request.getRequestDispatcher("authorization.html").include(request, response);
     }
 
     private void editGood(HttpServletRequest request, String category) throws ServletException, IOException {
         getGoodDAO(category).update(createGoodByRequest(request, category));
+    }
+
+    private void redirectToEditPage(HttpServletRequest request, HttpServletResponse response, String category) throws IOException {
+        response.sendRedirect("edit?category=" + category + "&id=" + request.getParameter("id"));
     }
 
     private Good createGoodByRequest(HttpServletRequest request, String category) {

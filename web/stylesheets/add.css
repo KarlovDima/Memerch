@@ -1,0 +1,13 @@
+body {
+    padding: 1vmin;
+}
+
+table {
+    font-family: 'DejaVu Sans Mono', monospace;
+    font-size: 3vmin;
+}
+
+.parameter {
+    font-family: 'DejaVu Sans Mono', monospace;
+    font-size: 3vmin;
+}

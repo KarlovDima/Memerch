@@ -53,7 +53,7 @@
             </td>
         </tr>
         <tr>
-            <td class="parameter"><%=parameterName%><input type="text" name="parameter" value="<%=parameterValue%>">
+            <td class="parameter"><%=parameterName%><input type="text" name="parameter" value="<%=parameterValue%>" class="parameter">
             </td>
         </tr>
         <tr>

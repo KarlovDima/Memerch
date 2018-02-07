@@ -12,6 +12,19 @@
 <br/><br/>
 
 <table align="center">
+    <tr>
+        <td colspan="3" align="right" style="padding-right: 18vmin;">
+            <form action="add">
+                Category:
+                <select name="category" class="parameter">
+                    <option value="cutlery">Cutlery</option>
+                    <option value="clothes">Clothes</option>
+                    <option value="trifle">Trifle</option>
+                </select>
+                <input type="submit" value="Add">
+            </form>
+        </td>
+    </tr>
     <%
         List<Good> goods = (List<Good>) request.getAttribute("goods");
         for (Good good : goods) {
