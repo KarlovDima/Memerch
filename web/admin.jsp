@@ -10,7 +10,6 @@
 <body>
 <jsp:include page="admin-header.html"/>
 <br/><br/>
-
 <table align="center">
     <tr>
         <td colspan="3" align="right" style="padding-right: 18vmin;">
