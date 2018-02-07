@@ -11,6 +11,11 @@ public class Cutlery extends Good {
         this.volume = volume;
     }
 
+    public Cutlery(String name, String producer, float price, String mem, String material, String volume) {
+        super(name, producer, price, mem, material);
+        this.volume = volume;
+    }
+
     public String getVolume() {
         return volume;
     }

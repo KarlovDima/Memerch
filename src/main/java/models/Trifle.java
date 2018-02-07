@@ -11,6 +11,11 @@ public class Trifle extends Good {
         this.amount = amount;
     }
 
+    public Trifle(String name, String producer, float price, String mem, String material, int amount) {
+        super(name, producer, price, mem, material);
+        this.amount = amount;
+    }
+
     public int getAmount() {
         return amount;
     }

@@ -20,6 +20,14 @@ public abstract class Good {
         this.material = material;
     }
 
+    public Good(String name, String producer, float price, String mem, String material) {
+        this.name = name;
+        this.producer = producer;
+        this.price = price;
+        this.mem = mem;
+        this.material = material;
+    }
+
     public int getId() {
         return id;
     }

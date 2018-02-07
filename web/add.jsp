@@ -9,7 +9,8 @@
 <jsp:include page="admin-header.html"/>
 <br/><br/>
 
-<form action="edit">
+<form action="add">
+    <input type="hidden" name="category" value="<%=request.getParameter("category")%>">
     <table align="center">
         <tr>
             <td>Name:</td>
@@ -33,6 +34,10 @@
         <tr>
             <td>Mem:</td>
             <td><input type="url" name="mem" class="parameter"></td>
+        </tr>
+        <tr>
+            <td><%=request.getAttribute("parameterName")%>:</td>
+            <td><input type="text" name="parameter" class="parameter">
         </tr>
         <tr>
             <td colspan="2" align="right"><input type="submit" value="OK"></td>

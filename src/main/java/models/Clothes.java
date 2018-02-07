@@ -11,6 +11,11 @@ public class Clothes extends Good {
         this.size = size;
     }
 
+    public Clothes(String name, String producer, float price, String mem, String material, String size) {
+        super(name, producer, price, mem, material);
+        this.size = size;
+    }
+
     public String getSize() {
         return size;
     }

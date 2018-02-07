@@ -32,7 +32,7 @@ public class EditServlet extends HttpServlet {
         } else request.getRequestDispatcher("authorization.html").include(request, response);
     }
 
-    private void editGood(HttpServletRequest request, String category) throws ServletException, IOException {
+    private void editGood(HttpServletRequest request, String category) {
         getGoodDAO(category).update(createGoodByRequest(request, category));
     }
 
@@ -54,8 +54,10 @@ public class EditServlet extends HttpServlet {
                 return new Clothes(id, name, producer, price, mem, material, parameter);
             case "cutlery":
                 return new Cutlery(id, name, producer, price, mem, material, parameter);
-            default:
+            case "trifle":
                 return new Trifle(id, name, producer, price, mem, material, Integer.parseInt(parameter));
+            default:
+                return null;
         }
     }
 
@@ -71,8 +73,10 @@ public class EditServlet extends HttpServlet {
                 return DAOFactory.getInstance().getClothesDAO();
             case "cutlery":
                 return DAOFactory.getInstance().getCutleryDAO();
-            default:
+            case "trifle":
                 return DAOFactory.getInstance().getTrifleDAO();
+            default:
+                return null;
         }
     }
 }
