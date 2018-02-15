@@ -1,5 +1,6 @@
 package dao.implementation;
 
+import utils.DataSourceConnection;
 import utils.DatabaseConnection;
 import dao.GenericDAO;
 import models.User;
@@ -15,7 +16,7 @@ public class UserDAO implements GenericDAO<User, Integer> {
     @Override
     public List<User> getAll() {
         List<User> userList = new ArrayList<>();
-        try (Connection connection = DatabaseConnection.getInstance().getConnection();
+        try (Connection connection = DataSourceConnection.getInstance().getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM USER");
              ResultSet resultSet = preparedStatement.executeQuery()) {
             while ((resultSet.next())) {
@@ -34,7 +35,7 @@ public class UserDAO implements GenericDAO<User, Integer> {
     @Override
     public int update(User entity) {
         int affectedRowsAmount = 0;
-        try (Connection connection = DatabaseConnection.getInstance().getConnection();
+        try (Connection connection = DataSourceConnection.getInstance().getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("UPDATE USER " +
                      "SET LOGIN = ?, PASSWORD = ? " +
                      "WHERE ID = ?")) {
@@ -51,7 +52,7 @@ public class UserDAO implements GenericDAO<User, Integer> {
     @Override
     public User getEntityById(Integer id) {
         User user = new User();
-        try (Connection connection = DatabaseConnection.getInstance().getConnection();
+        try (Connection connection = DataSourceConnection.getInstance().getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM USER WHERE ID = ?")) {
             preparedStatement.setInt(1, id);
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
@@ -71,7 +72,7 @@ public class UserDAO implements GenericDAO<User, Integer> {
     @Override
     public int delete(Integer id) {
         int affectedRowsAmount = 0;
-        try (Connection connection = DatabaseConnection.getInstance().getConnection();
+        try (Connection connection = DataSourceConnection.getInstance().getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM USER WHERE ID = ?")) {
             preparedStatement.setInt(1, id);
             affectedRowsAmount = preparedStatement.executeUpdate();
@@ -84,7 +85,7 @@ public class UserDAO implements GenericDAO<User, Integer> {
     @Override
     public int create(User entity) {
         int affectedRowsAmount = 0;
-        try (Connection connection = DatabaseConnection.getInstance().getConnection();
+        try (Connection connection = DataSourceConnection.getInstance().getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO USER " +
                      "(LOGIN, PASSWORD) VALUES (?, ?)")) {
             preparedStatement.setString(1, entity.getLogin());
@@ -98,7 +99,7 @@ public class UserDAO implements GenericDAO<User, Integer> {
 
     public User getEntityByLoginAndPassword(String login, String password) {
         User user =null;
-        try (Connection connection = DatabaseConnection.getInstance().getConnection();
+        try (Connection connection = DataSourceConnection.getInstance().getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM USER WHERE LOGIN = ? AND PASSWORD = ?")) {
             preparedStatement.setString(1, login);
             preparedStatement.setString(2, password);

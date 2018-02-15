@@ -1,5 +1,6 @@
 package dao.implementation;
 
+import utils.DataSourceConnection;
 import utils.DatabaseConnection;
 import dao.GenericDAO;
 import models.Trifle;
@@ -15,7 +16,7 @@ public class TrifleDAO implements GenericDAO<Trifle, Integer> {
     @Override
     public List<Trifle> getAll() {
         List<Trifle> trifleList = new ArrayList<>();
-        try (Connection connection = DatabaseConnection.getInstance().getConnection();
+        try (Connection connection = DataSourceConnection.getInstance().getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM TRIFLE");
              ResultSet resultSet = preparedStatement.executeQuery()) {
             while ((resultSet.next())) {
@@ -38,7 +39,7 @@ public class TrifleDAO implements GenericDAO<Trifle, Integer> {
     @Override
     public int update(Trifle entity) {
         int affectedRowsAmount = 0;
-        try (Connection connection = DatabaseConnection.getInstance().getConnection();
+        try (Connection connection = DataSourceConnection.getInstance().getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("UPDATE TRIFLE " +
                      "SET NAME = ?, PRODUCER = ?, PRICE = ?, MEM = ?, MATERIAL = ?, AMOUNT = ? " +
                      "WHERE ID = ?")) {
@@ -59,7 +60,7 @@ public class TrifleDAO implements GenericDAO<Trifle, Integer> {
     @Override
     public Trifle getEntityById(Integer id) {
         Trifle trifle = new Trifle();
-        try (Connection connection = DatabaseConnection.getInstance().getConnection();
+        try (Connection connection = DataSourceConnection.getInstance().getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM TRIFLE WHERE ID = ?")) {
             preparedStatement.setInt(1, id);
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
@@ -83,7 +84,7 @@ public class TrifleDAO implements GenericDAO<Trifle, Integer> {
     @Override
     public int delete(Integer id) {
         int affectedRowsAmount = 0;
-        try (Connection connection = DatabaseConnection.getInstance().getConnection();
+        try (Connection connection = DataSourceConnection.getInstance().getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM TRIFLE WHERE ID = ?")) {
             preparedStatement.setInt(1, id);
             affectedRowsAmount = preparedStatement.executeUpdate();
@@ -96,7 +97,7 @@ public class TrifleDAO implements GenericDAO<Trifle, Integer> {
     @Override
     public int create(Trifle entity) {
         int affectedRowsAmount = 0;
-        try (Connection connection = DatabaseConnection.getInstance().getConnection();
+        try (Connection connection = DataSourceConnection.getInstance().getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO TRIFLE " +
                      "(NAME, PRODUCER, PRICE, MEM, MATERIAL, AMOUNT) VALUES (?, ?, ?, ?, ?, ?)")) {
             preparedStatement.setString(1, entity.getName());

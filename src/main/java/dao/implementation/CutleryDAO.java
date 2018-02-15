@@ -1,5 +1,6 @@
 package dao.implementation;
 
+import utils.DataSourceConnection;
 import utils.DatabaseConnection;
 import dao.GenericDAO;
 import models.Cutlery;
@@ -15,7 +16,7 @@ public class CutleryDAO implements GenericDAO<Cutlery, Integer> {
     @Override
     public List<Cutlery> getAll() {
         List<Cutlery> cutleryList = new ArrayList<>();
-        try (Connection connection = DatabaseConnection.getInstance().getConnection();
+        try (Connection connection = DataSourceConnection.getInstance().getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM CUTLERY");
              ResultSet resultSet = preparedStatement.executeQuery()) {
             while ((resultSet.next())) {
@@ -38,7 +39,7 @@ public class CutleryDAO implements GenericDAO<Cutlery, Integer> {
     @Override
     public int update(Cutlery entity) {
         int affectedRowsAmount = 0;
-        try (Connection connection = DatabaseConnection.getInstance().getConnection();
+        try (Connection connection = DataSourceConnection.getInstance().getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("UPDATE CUTLERY " +
                      "SET NAME = ?, PRODUCER = ?, PRICE = ?, MEM = ?, MATERIAL = ?, VOLUME = ? " +
                      "WHERE ID = ?")) {
@@ -59,7 +60,7 @@ public class CutleryDAO implements GenericDAO<Cutlery, Integer> {
     @Override
     public Cutlery getEntityById(Integer id) {
         Cutlery cutlery = new Cutlery();
-        try (Connection connection = DatabaseConnection.getInstance().getConnection();
+        try (Connection connection = DataSourceConnection.getInstance().getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM CUTLERY WHERE ID = ?")) {
             preparedStatement.setInt(1, id);
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
@@ -83,7 +84,7 @@ public class CutleryDAO implements GenericDAO<Cutlery, Integer> {
     @Override
     public int delete(Integer id) {
         int affectedRowsAmount = 0;
-        try (Connection connection = DatabaseConnection.getInstance().getConnection();
+        try (Connection connection = DataSourceConnection.getInstance().getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM CUTLERY WHERE ID = ?")) {
             preparedStatement.setInt(1, id);
             affectedRowsAmount = preparedStatement.executeUpdate();
@@ -96,7 +97,7 @@ public class CutleryDAO implements GenericDAO<Cutlery, Integer> {
     @Override
     public int create(Cutlery entity) {
         int affectedRowsAmount = 0;
-        try (Connection connection = DatabaseConnection.getInstance().getConnection();
+        try (Connection connection = DataSourceConnection.getInstance().getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO CUTLERY " +
                      "(NAME, PRODUCER, PRICE, MEM, MATERIAL, VOLUME) VALUES (?, ?, ?, ?, ?, ?)")) {
             preparedStatement.setString(1, entity.getName());

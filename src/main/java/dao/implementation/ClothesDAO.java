@@ -1,5 +1,6 @@
 package dao.implementation;
 
+import utils.DataSourceConnection;
 import utils.DatabaseConnection;
 import dao.GenericDAO;
 import models.Clothes;
@@ -15,7 +16,7 @@ public class ClothesDAO implements GenericDAO<Clothes, Integer> {
     @Override
     public List<Clothes> getAll() {
         List<Clothes> clothesList = new ArrayList<>();
-        try (Connection connection = DatabaseConnection.getInstance().getConnection();
+        try (Connection connection = DataSourceConnection.getInstance().getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM CLOTHES");
              ResultSet resultSet = preparedStatement.executeQuery()) {
             while ((resultSet.next())) {
@@ -38,7 +39,7 @@ public class ClothesDAO implements GenericDAO<Clothes, Integer> {
     @Override
     public int update(Clothes entity) {
         int affectedRowsAmount = 0;
-        try (Connection connection = DatabaseConnection.getInstance().getConnection();
+        try (Connection connection = DataSourceConnection.getInstance().getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("UPDATE CLOTHES " +
                      "SET NAME = ?, PRODUCER = ?, PRICE = ?, MEM = ?, MATERIAL = ?, SIZE = ? " +
                      "WHERE ID = ?")) {
@@ -59,7 +60,7 @@ public class ClothesDAO implements GenericDAO<Clothes, Integer> {
     @Override
     public Clothes getEntityById(Integer id) {
         Clothes clothes = new Clothes();
-        try (Connection connection = DatabaseConnection.getInstance().getConnection();
+        try (Connection connection = DataSourceConnection.getInstance().getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM CLOTHES WHERE ID = ?")) {
             preparedStatement.setInt(1, id);
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
@@ -83,7 +84,7 @@ public class ClothesDAO implements GenericDAO<Clothes, Integer> {
     @Override
     public int delete(Integer id) {
         int affectedRowsAmount = 0;
-        try (Connection connection = DatabaseConnection.getInstance().getConnection();
+        try (Connection connection = DataSourceConnection.getInstance().getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM CLOTHES WHERE ID = ?")) {
             preparedStatement.setInt(1, id);
             affectedRowsAmount = preparedStatement.executeUpdate();
@@ -96,7 +97,7 @@ public class ClothesDAO implements GenericDAO<Clothes, Integer> {
     @Override
     public int create(Clothes entity) {
         int affectedRowsAmount = 0;
-        try (Connection connection = DatabaseConnection.getInstance().getConnection();
+        try (Connection connection = DataSourceConnection.getInstance().getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO CLOTHES " +
                      "(NAME, PRODUCER, PRICE, MEM, MATERIAL, SIZE) VALUES (?, ?, ?, ?, ?, ?)")) {
             preparedStatement.setString(1, entity.getName());
