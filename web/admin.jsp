@@ -12,7 +12,18 @@
 <br/><br/>
 <table align="center">
     <tr>
-        <td colspan="3" align="right" style="padding-right: 18vmin;">
+        <td colspan="2" align="right" style="padding-right: 18vmin;">
+            <form action="admin">
+                <%request.setAttribute("goods",request.getAttribute("goods"));%>
+                Sort by name:
+                <select name="sorting" class="parameter">
+                    <option value="descending">descending</option>
+                    <option value="ascending">ascending</option>
+                </select>
+                <input type="submit" value="Sort">
+            </form>
+        </td>
+        <td style="padding-right: 18vmin;">
             <form action="add">
                 Category:
                 <select name="category" class="parameter">
