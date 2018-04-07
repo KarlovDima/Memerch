@@ -12,9 +12,15 @@
 <br/><br/>
 <table align="center">
     <tr>
-        <td colspan="2" align="right" style="padding-right: 18vmin;">
+        <td>
             <form action="admin">
-                <%request.setAttribute("goods",request.getAttribute("goods"));%>
+                Search:
+                <input type="search" name="searching">
+                <input type="submit" value="Start">
+            </form>
+        </td>
+        <td>
+            <form action="admin">
                 Sort by name:
                 <select name="sorting" class="parameter">
                     <option value="descending">descending</option>
@@ -23,7 +29,7 @@
                 <input type="submit" value="Sort">
             </form>
         </td>
-        <td style="padding-right: 18vmin;">
+        <td>
             <form action="add">
                 Category:
                 <select name="category" class="parameter">
